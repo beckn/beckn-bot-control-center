@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+.border {
+  border: 0px solid black;
+}
+
+.button-wrapper {
+  width: 60%;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+.button {
+  height: 20vh;
+  margin: 10px 20px;
+  width: 20vh;
+  display: inline-block;
+  border: 1px solid rgb(113, 113, 113);
+  background-color: rgb(208, 208, 208);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.box-selected {
+  box-shadow: 6px 4px 6px 1px #9d9d9d;
+}
+.button-text {
+  margin-top: 50px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
