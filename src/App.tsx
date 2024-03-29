@@ -4,8 +4,7 @@ import axios from "axios";
 import "./App.css";
 import {
   BASE_URL,
-  CANCEL_BOOKING_MESSAGE,
-  TRIGGER_BLIZZARD_MESSAGE
+ 
 } from "./constants";
 
 // const BASE_URL = BASE_URL
@@ -16,8 +15,6 @@ function App() {
     setButtonSelected("Cancel Booking!");
     alert("Cancel Booking!");
     await axios.post(`${BASE_URL}/cancel-booking`, {
-      recipientNumber: "+919226916445",
-      messageBody: CANCEL_BOOKING_MESSAGE,
       orderId
     });
     setButtonSelected("");
@@ -25,10 +22,7 @@ function App() {
 
   const TriggerBlizzardButtonAction = async () => {
     setButtonSelected("Trigger a Blizzard");
-    await axios.post(`${BASE_URL}/notify`, {
-      recipientNumber: "+919226916445",
-      messageBody: TRIGGER_BLIZZARD_MESSAGE
-    });
+    await axios.post(`${BASE_URL}/notify`, {});
     setButtonSelected("");
   };
 
