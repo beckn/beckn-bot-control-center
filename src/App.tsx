@@ -5,7 +5,8 @@ import "./App.css";
 import {
   BASE_URL,
   CANCEL_BOOKING_MESSAGE,
-  TRIGGER_BLIZZARD_MESSAGE
+  TRIGGER_BLIZZARD_MESSAGE,
+  BAD_WEATHER_MESSAGE
 } from "./constants";
 
 // const BASE_URL = BASE_URL
@@ -36,6 +37,21 @@ function App() {
     setButtonSelected("Add New Museum!");
     alert("Add New Museum!");
     await axios.post(`${BASE_URL}/update-catalog`, {});
+    setButtonSelected("");
+  };
+
+  const AddBadWeatherButtonAction = async () => {
+    setButtonSelected("Trigger warning about bad weather");
+    await axios.post(`${BASE_URL}/notify`, {
+      userNo: "+919226916445",
+      message: BAD_WEATHER_MESSAGE
+    });
+    setButtonSelected("");
+  };
+
+  const AddToggleNetworkButtonAction = async () => {
+    setButtonSelected("Toggle network switch");
+    await axios.get(`${BASE_URL}/toggle-network/switch`);
     setButtonSelected("");
   };
 
@@ -75,6 +91,16 @@ function App() {
           className={createButtonClass("Add New Museum!")}
           onClick={() => AddNewMuseumButtonAction()}>
           <h3 className="button-text">Add New Museum!</h3>
+        </div>
+        <div
+          className={createButtonClass("Trigger warning about bad weather")}
+          onClick={() => AddBadWeatherButtonAction()}>
+          <h3 className="button-text">Trigger warning about bad weather</h3>
+        </div>
+        <div
+          className={createButtonClass("Toggle network switch")}
+          onClick={() => AddToggleNetworkButtonAction()}>
+          <h3 className="button-text">Toggle network switch</h3>
         </div>
       </div>
     </div>
