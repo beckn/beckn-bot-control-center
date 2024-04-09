@@ -157,7 +157,247 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to Control Center</h1>
-      <div className="border button-wrapper">
+
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>RETAIL</th>
+              <th>HOTEL</th>
+              <th>TOURISM</th>
+              <th>ENERGY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div className={createButtonClass("Fulfillment")}>
+                  <select
+                    name="retail"
+                    id="retail-ids"
+                    style={{ marginTop: "15px", width: "60%" }}
+                    onChange={(e) => {
+                      setNewRetailStatus(
+                        `Currrent Status: ${
+                          JSON.parse(e.target.value)?.attributes?.state_code
+                        }`
+                      );
+                      setRetailOrderId(JSON.parse(e.target.value));
+                    }}>
+                    <option value={`{}`}>Select Order Id</option>
+                    {retailOrderIds.map((order: any) => {
+                      return (
+                        <option value={JSON.stringify(order)}>
+                          {order?.attributes.order_id.data.id}
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <select
+                    name="retail-status"
+                    id="retail-status"
+                    style={{ marginTop: "8px", width: "80%" }}
+                    onChange={(e) => {
+                      setRetailStatusSelect(e.target.value);
+                    }}>
+                    <option value={`{}`}>Select Status Code</option>
+                    {STATUS_CODE.retail.map((code: any) => {
+                      return <option value={code}>{code}</option>;
+                    })}
+                  </select>
+
+                  <div
+                    onClick={() =>
+                      UpdateStatusButtonAction(retailOrderId, "retail")
+                    }>
+                    <h3 className="button-text">Fulfillment</h3>
+                    <p>{newRetailStatus}</p>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div className={createButtonClass("Fulfillment")}>
+                  <select
+                    name="hotel"
+                    id="hotel-ids"
+                    style={{ marginTop: "15px", width: "60%" }}
+                    onChange={(e) => {
+                      setNewHotelStatus(
+                        `Currrent Status: ${
+                          JSON.parse(e.target.value)?.attributes?.state_code
+                        }`
+                      );
+                      setHotelOrderId(JSON.parse(e.target.value));
+                    }}>
+                    <option value={`{}`}>Select Order Id</option>
+                    {hotelOrderIds.map((order: any) => {
+                      return (
+                        <option value={JSON.stringify(order)}>
+                          {order?.attributes.order_id.data.id}
+                        </option>
+                      );
+                    })}
+                  </select>
+
+                  <select
+                    name="hotel-status"
+                    id="hotel-status"
+                    style={{ marginTop: "8px", width: "80%" }}
+                    onChange={(e) => {
+                      setHotelStatusSelect(e.target.value);
+                    }}>
+                    <option value={`{}`}>Select Status Code</option>
+                    {STATUS_CODE.hotel.map((code: any) => {
+                      return <option value={code}>{code}</option>;
+                    })}
+                  </select>
+
+                  <div
+                    onClick={() =>
+                      UpdateStatusButtonAction(hotelOrderId, "hotel")
+                    }>
+                    <h3 className="button-text">Fulfillment</h3>
+                    <p>{newHotelStatus}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className={createButtonClass("Fulfillment")}>
+                  <select
+                    name="tourism"
+                    id="tourism-ids"
+                    style={{ marginTop: "15px", width: "60%" }}
+                    onChange={(e) => {
+                      setNewTourismStatus(
+                        `Currrent Status: ${
+                          JSON.parse(e.target.value)?.attributes?.state_code
+                        }`
+                      );
+                      setTourismOrderId(JSON.parse(e.target.value));
+                    }}>
+                    <option value={`{}`}>Select Order Id</option>
+                    {tourismOrderIds.map((order: any) => {
+                      return (
+                        <option value={JSON.stringify(order)}>
+                          {order?.attributes.order_id.data.id}
+                        </option>
+                      );
+                    })}
+                  </select>
+
+                  <select
+                    name="tourism-status"
+                    id="tourism-status"
+                    style={{ marginTop: "8px", width: "80%" }}
+                    onChange={(e) => {
+                      setTourismStatusSelect(e.target.value);
+                    }}>
+                    <option value={`{}`}>Select Status Code</option>
+                    {STATUS_CODE.tourism.map((code: any) => {
+                      return <option value={code}>{code}</option>;
+                    })}
+                  </select>
+                  <div
+                    onClick={() =>
+                      UpdateStatusButtonAction(tourismOrderId, "tourism")
+                    }>
+                    <h3 className="button-text">Fulfillment</h3>
+                    <p>{newTourismStatus}</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className={createButtonClass("Fulfillment")}>
+                  <select
+                    name="energy"
+                    id="energy-ids"
+                    style={{ marginTop: "15px", width: "60%" }}
+                    onChange={(e) => {
+                      setNewEnergyStatus(
+                        `Currrent Status: ${
+                          JSON.parse(e.target.value)?.attributes?.state_code
+                        }`
+                      );
+                      setEnergyOrderId(JSON.parse(e.target.value));
+                    }}>
+                    <option value={`{}`}>Select Order Id</option>
+                    {energyOrderIds.map((order: any) => {
+                      return (
+                        <option value={JSON.stringify(order)}>
+                          {order?.attributes.order_id.data.id}
+                        </option>
+                      );
+                    })}
+                  </select>
+
+                  <select
+                    name="energy-status"
+                    id="energy-status"
+                    style={{ marginTop: "8px", width: "80%" }}
+                    onChange={(e) => {
+                      setEnergyStatusSelect(e.target.value);
+                    }}>
+                    <option value={`{}`}>Select Status Code</option>
+                    {STATUS_CODE.energy.map((code: any) => {
+                      return <option value={code}>{code}</option>;
+                    })}
+                  </select>
+
+                  <div
+                    onClick={() =>
+                      UpdateStatusButtonAction(energyOrderId, "energy")
+                    }>
+                    <h3 className="button-text">Fulfillment</h3>
+                    <p>{newEnergyStatus}</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div
+                  className={createButtonClass("Trigger a Blizzard")}
+                  onClick={() => TriggerBlizzardButtonAction()}>
+                  <h3 className="button-text">Trigger a Blizzard</h3>
+                </div>
+              </td>
+              <td></td>
+              <td>
+                <div
+                  className={createButtonClass("Add New Museum!")}
+                  onClick={() => AddNewMuseumButtonAction()}>
+                  <h3 className="button-text">Add New Museum!</h3>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>
+                <div className={createButtonClass("Cancel Booking!")}>
+                  <input
+                    type="text"
+                    style={{ marginTop: "15px", width: "60%" }}
+                    onChange={(e) => setOrderId(e.target.value)}
+                    value={orderId}
+                    placeholder="Order Id"></input>
+                  <div onClick={() => CancelBookingButtonAction()}>
+                    <h3 className="button-text" style={{ marginTop: "13px" }}>
+                      Cancel <br></br>Booking!
+                    </h3>
+                  </div>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* <div className="border button-wrapper">
         <div
           className={createButtonClass("Trigger a Blizzard")}
           onClick={() => TriggerBlizzardButtonAction()}>
@@ -184,207 +424,7 @@ function App() {
         <br></br>
         <br></br>
         <br></br>
-
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>RETAIL</th>
-                <th>HOTEL</th>
-                <th>TOURISM</th>
-                <th>ENERGY</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div className={createButtonClass("Fulfillment")}>
-                    <select
-                      name="retail"
-                      id="retail-ids"
-                      style={{ marginTop: "15px", width: "60%" }}
-                      onChange={(e) => {
-                        setNewRetailStatus(
-                          `Currrent Status: ${
-                            JSON.parse(e.target.value)?.attributes?.state_code
-                          }`
-                        );
-                        setRetailOrderId(JSON.parse(e.target.value));
-                      }}>
-                      <option value={`{}`}>Select Order Id</option>
-                      {retailOrderIds.map((order: any) => {
-                        return (
-                          <option value={JSON.stringify(order)}>
-                            {order?.attributes.order_id.data.id}
-                          </option>
-                        );
-                      })}
-                    </select>
-                    <select
-                      name="retail-status"
-                      id="retail-status"
-                      style={{ marginTop: "8px", width: "80%" }}
-                      onChange={(e) => {
-                        setRetailStatusSelect(e.target.value);
-                      }}>
-                      <option value={`{}`}>Select Status Code</option>
-                      {STATUS_CODE.retail.map((code: any) => {
-                        return <option value={code}>{code}</option>;
-                      })}
-                    </select>
-
-                    <div
-                      onClick={() =>
-                        UpdateStatusButtonAction(retailOrderId, "retail")
-                      }>
-                      <h3 className="button-text">Fulfillment</h3>
-                      <p>{newRetailStatus}</p>
-                    </div>
-                  </div>
-                </td>
-
-                <td>
-                  <div className={createButtonClass("Fulfillment")}>
-                    <select
-                      name="hotel"
-                      id="hotel-ids"
-                      style={{ marginTop: "15px", width: "60%" }}
-                      onChange={(e) => {
-                        setNewHotelStatus(
-                          `Currrent Status: ${
-                            JSON.parse(e.target.value)?.attributes?.state_code
-                          }`
-                        );
-                        setHotelOrderId(JSON.parse(e.target.value));
-                      }}>
-                      <option value={`{}`}>Select Order Id</option>
-                      {hotelOrderIds.map((order: any) => {
-                        return (
-                          <option value={JSON.stringify(order)}>
-                            {order?.attributes.order_id.data.id}
-                          </option>
-                        );
-                      })}
-                    </select>
-
-                    <select
-                      name="hotel-status"
-                      id="hotel-status"
-                      style={{ marginTop: "8px", width: "80%" }}
-                      onChange={(e) => {
-                        setHotelStatusSelect(e.target.value);
-                      }}>
-                      <option value={`{}`}>Select Status Code</option>
-                      {STATUS_CODE.hotel.map((code: any) => {
-                        return <option value={code}>{code}</option>;
-                      })}
-                    </select>
-
-                    <div
-                      onClick={() =>
-                        UpdateStatusButtonAction(hotelOrderId, "hotel")
-                      }>
-                      <h3 className="button-text">Fulfillment</h3>
-                      <p>{newHotelStatus}</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className={createButtonClass("Fulfillment")}>
-                    <select
-                      name="tourism"
-                      id="tourism-ids"
-                      style={{ marginTop: "15px", width: "60%" }}
-                      onChange={(e) => {
-                        setNewTourismStatus(
-                          `Currrent Status: ${
-                            JSON.parse(e.target.value)?.attributes?.state_code
-                          }`
-                        );
-                        setTourismOrderId(JSON.parse(e.target.value));
-                      }}>
-                      <option value={`{}`}>Select Order Id</option>
-                      {tourismOrderIds.map((order: any) => {
-                        return (
-                          <option value={JSON.stringify(order)}>
-                            {order?.attributes.order_id.data.id}
-                          </option>
-                        );
-                      })}
-                    </select>
-
-                    <select
-                      name="tourism-status"
-                      id="tourism-status"
-                      style={{ marginTop: "8px", width: "80%" }}
-                      onChange={(e) => {
-                        setTourismStatusSelect(e.target.value);
-                      }}>
-                      <option value={`{}`}>Select Status Code</option>
-                      {STATUS_CODE.tourism.map((code: any) => {
-                        return <option value={code}>{code}</option>;
-                      })}
-                    </select>
-                    <div
-                      onClick={() =>
-                        UpdateStatusButtonAction(tourismOrderId, "tourism")
-                      }>
-                      <h3 className="button-text">Fulfillment</h3>
-                      <p>{newTourismStatus}</p>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className={createButtonClass("Fulfillment")}>
-                    <select
-                      name="energy"
-                      id="energy-ids"
-                      style={{ marginTop: "15px", width: "60%" }}
-                      onChange={(e) => {
-                        setNewEnergyStatus(
-                          `Currrent Status: ${
-                            JSON.parse(e.target.value)?.attributes?.state_code
-                          }`
-                        );
-                        setEnergyOrderId(JSON.parse(e.target.value));
-                      }}>
-                      <option value={`{}`}>Select Order Id</option>
-                      {energyOrderIds.map((order: any) => {
-                        return (
-                          <option value={JSON.stringify(order)}>
-                            {order?.attributes.order_id.data.id}
-                          </option>
-                        );
-                      })}
-                    </select>
-
-                    <select
-                      name="energy-status"
-                      id="energy-status"
-                      style={{ marginTop: "8px", width: "80%" }}
-                      onChange={(e) => {
-                        setEnergyStatusSelect(e.target.value);
-                      }}>
-                      <option value={`{}`}>Select Status Code</option>
-                      {STATUS_CODE.energy.map((code: any) => {
-                        return <option value={code}>{code}</option>;
-                      })}
-                    </select>
-
-                    <div
-                      onClick={() =>
-                        UpdateStatusButtonAction(energyOrderId, "energy")
-                      }>
-                      <h3 className="button-text">Fulfillment</h3>
-                      <p>{newEnergyStatus}</p>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      </div> */}
     </div>
   );
 }
