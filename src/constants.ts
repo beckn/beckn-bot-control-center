@@ -18,6 +18,6 @@ export const STRAPI_HOTEL_TOKEN =
 export const STATUS_CODE = {
   retail: ["order-picked-up", "order-on-the-way", "order-delivered"],
   tourism: ["ticket-issued", "ticket-validated"],
-  energy: ["charging-started", "charging-stopped", "charger-not-working"],
+  energy: ["charging-started", "charging-stopped", "charger-not-working", "charging-completed"],
   hotel: ["checked-in", "checked-out"]
 };

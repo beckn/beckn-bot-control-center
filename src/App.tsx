@@ -3,9 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 import {
-  // eslint-disable-next-line
   BASE_URL_PROD,
-  BASE_URL_LOCAL,
   CANCEL_BOOKING_MESSAGE,
   TRIGGER_BLIZZARD_MESSAGE,
   TOURISM_STRAPI_URL,
@@ -85,7 +83,7 @@ function App() {
 
   const CancelBookingButtonAction = async () => {
     setButtonSelected("Cancel Booking!");
-    await axios.post(`${BASE_URL_LOCAL}/cancel-booking`, {
+    await axios.post(`${BASE_URL_PROD}/cancel-booking`, {
       recipientNumber: "+919226916445",
       messageBody: CANCEL_BOOKING_MESSAGE,
       orderId
@@ -95,7 +93,7 @@ function App() {
 
   const TriggerBlizzardButtonAction = async () => {
     setButtonSelected("Trigger a Blizzard");
-    await axios.post(`${BASE_URL_LOCAL}/notify`, {
+    await axios.post(`${BASE_URL_PROD}/notify`, {
       recipientNumber: "+919226916445",
       messageBody: TRIGGER_BLIZZARD_MESSAGE
     });
@@ -105,14 +103,14 @@ function App() {
   const AddNewMuseumButtonAction = async () => {
     setButtonSelected("Add New Museum!");
 
-    await axios.post(`${BASE_URL_LOCAL}/update-catalog`, {});
+    await axios.post(`${BASE_URL_PROD}/update-catalog`, {});
     setButtonSelected("");
   };
 
   const UpdateStatusButtonAction = async (orderId: any, domain: string) => {
     if (domain === "retail") {
       setNewRetailStatus("");
-      const response = await axios.post(`${BASE_URL_LOCAL}/update-status`, {
+      const response = await axios.post(`${BASE_URL_PROD}/update-status`, {
         orderId: orderId?.attributes?.order_id?.data?.id,
         status: retailStatusSelect,
         domain
@@ -121,7 +119,7 @@ function App() {
     }
     if (domain === "tourism") {
       setNewTourismStatus("");
-      const response = await axios.post(`${BASE_URL_LOCAL}/update-status`, {
+      const response = await axios.post(`${BASE_URL_PROD}/update-status`, {
         orderId: orderId?.attributes?.order_id?.data?.id,
         status: tourismStatusSelect,
         domain
@@ -131,7 +129,7 @@ function App() {
     if (domain === "hotel") {
       setNewHotelStatus("");
 
-      const response = await axios.post(`${BASE_URL_LOCAL}/update-status`, {
+      const response = await axios.post(`${BASE_URL_PROD}/update-status`, {
         orderId: orderId?.attributes?.order_id?.data?.id,
         status: hotelStatusSelect,
         domain
@@ -140,7 +138,7 @@ function App() {
     }
     if (domain === "energy") {
       setNewEnergyStatus("");
-      const response = await axios.post(`${BASE_URL_LOCAL}/update-status`, {
+      const response = await axios.post(`${BASE_URL_PROD}/update-status`, {
         orderId: orderId?.attributes?.order_id?.data?.id,
         status: energyStatusSelect,
         domain
